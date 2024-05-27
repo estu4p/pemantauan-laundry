@@ -1,0 +1,63 @@
+body {
+  font-family: "Lato", sans-serif;
+}
+
+h1 {
+  margin-bottom: 40px;
+}
+
+label {
+  color: #333;
+}
+
+.btn-send {
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  width: 80%;
+  margin-left: 3px;
+}
+.help-block.with-errors {
+  color: #ff5050;
+  margin-top: 5px;
+}
+
+.card {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+/*  */
+
+.card {
+  box-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
+}
+
+.avatar.sm {
+  width: 2.25rem;
+  height: 2.25rem;
+  font-size: 0.818125rem;
+}
+
+.table-nowrap .table td,
+.table-nowrap .table th {
+  white-space: nowrap;
+}
+
+.table > :not(caption) > * > * {
+  padding: 0.75rem 1.25rem;
+  border-bottom-width: 1px;
+}
+
+table th {
+  font-weight: 600;
+  background-color: #eeecfd !important;
+}
+
+.fa-arrow-up {
+  color: #00ced1;
+}
+
+.fa-arrow-down {
+  color: #ff00ff;
+}

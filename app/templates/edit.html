@@ -1,0 +1,138 @@
+{% extends 'base.html' %} {% block title %}Home{% endblock %} {% block body %}
+<div class="container">
+  <div class="text-center mt-5">
+    <h1>Form Edit link</h1>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-7 mx-auto">
+      <div class="card mt-2 mx-auto p-4 bg-light">
+        <div class="card-body bg-light">
+          <div class="container">
+            <form
+              method="post"
+              action="/customer/{{ customer.id }}"
+              id="contact-form"
+              role="form"
+            >
+            <input type="hidden" name="_edit" value="PUT"> 
+              <div class="controls">
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                      <label for="form_name">Nama</label>
+                      <input
+                        id="form_name"
+                        type="text"
+                        name="name"
+                        class="form-control"
+                        placeholder="Nama"
+                        required
+                        data-error="Firstname is required."
+                        value="{{ customer.name }}"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                      <label for="form_lastname">Phone</label>
+                      <input
+                        id="form_lastname"
+                        type="text"
+                        name="phone"
+                        class="form-control"
+                        placeholder="Ho HP"
+                        required
+                        data-error="Lastname is required."
+                        value="{{ customer.phone}}"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                      <label for="form_email">Alamat</label>
+                      <input
+                        id="form_email"
+                        type="text"
+                        name="address"
+                        class="form-control"
+                        placeholder="Alamat"
+                        required
+                        data-error="Valid email is required."
+                        value="{{ customer.address }}"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                      <label for="form_need">Process</label>
+                      <select
+                        id="form_need"
+                        name="process"
+                        class="form-control"
+                        required
+                        data-error="Please specify your need."
+                      >
+                        <option value="" selected disabled>Pilih Proses</option>
+                        <option value="1" {% if customer and customer.process == 1 %}selected{% endif %} >Barang sampai di toko</option>
+                        <option value="2" {% if customer and customer.process == 2 %}selected{% endif %} >Penimbangan</option>
+                        <option value="3" {% if customer and customer.process == 3 %}selected{% endif %} >Pencucian</option>
+                        <option value="4" {% if customer and customer.process == 4 %}selected{% endif %} >Pengeringan</option>
+                        <option value="5" {% if customer and customer.process == 5 %}selected{% endif %} >Setrika</option>
+                        <option value="6" {% if customer and customer.process == 6 %}selected{% endif %} >Selesai</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                      <label for="form_need">Status</label>
+                      <select
+                        id="form_need"
+                        name="status"
+                        class="form-control"
+                        data-error="Please specify your need."
+                      >
+                        <option value="" selected disabled>Pilih Status</option>
+                        <option value="belum diambil" {% if customer and customer.status == "belum diambil" %}selected{% endif %}>Belum diambil</option>
+                        <option value="sudah diambil" {% if customer and customer.status == "sudah diambil" %}selected{% endif %}>Sudah diambil</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12 mb-3">
+                    <div class="form-group">
+                      <label for="form_message">Catatan</label>
+                      <textarea
+                        id="form_message"
+                        name="notes"
+                        class="form-control"
+                        placeholder="Catatan"
+                        rows="4"
+                        data-error="Please, leave us a message."
+                      >{{ customer.notes if customer and customer.notes else '' }}</textarea>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <input
+                      type="submit"
+                      class="btn btn-success btn-send pt-2 btn-block w-100"
+                      value="Edit"
+                    />
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- /.8 -->
+    </div>
+    <!-- /.row-->
+  </div>
+</div>
+
+{% endblock %}
