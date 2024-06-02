@@ -8,8 +8,10 @@ class Config(object):
     USERNAME = str(os.environ.get('DB_USERNAME'))
     PASSWORD = str(os.environ.get('DB_PASSWORD'))
 
+    KEY_FERNET = str(os.environ.get('KEY_FERNET'))
     JWT_SECRET_KEY = str(os.environ.get('JWT_SECRET'))
     SQLALCHEMY_DATABASE_URI = "mysql+pymysql://" + USERNAME + ":" + PASSWORD + "@" + HOST + "/" + DATABASE
+    # SQLALCHEMY_DATABASE_URI =  'sqlite:///site.db'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_RECORD_QUERIES = True
 

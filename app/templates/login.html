@@ -16,12 +16,6 @@
         color: #fff;
       }
 
-      .profile-image-pic {
-        height: 200px;
-        width: 200px;
-        object-fit: cover;
-      }
-
       .cardbody-color {
         background-color: #ebf2fa;
       }
@@ -36,40 +30,39 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6 offset-md-3">
-          <h2 class="text-center text-dark mt-5">Login Form</h2>
-          <div class="text-center mb-5 text-dark">Laundry Jaya</div>
+          <!-- <h2 class="text-center text-dark mt-5">Login Form</h2>
+          <div class="text-center mb-5 text-dark">Laundry Jaya</div> -->
           <div class="card my-5">
             <form
               class="card-body cardbody-color p-lg-5"
               method="post"
               action="/login"
             >
-              <div class="text-center">
-                <img
-                  src="https://cdn.pixabay.com/photo/2016/03/31/19/56/avatar-1295397__340.png"
-                  class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3"
-                  width="200px"
-                  alt="profile"
-                />
-              </div>
-
+              <h2 class="text-dark">Login</h2>
+              <div class="mb-5 text-dark">Laundry Jaya</div>
               <div class="mb-3">
+                <label for="Username" class="mb-2 text-black text-opacity-75"
+                  >Username</label
+                >
                 <input
                   type="text"
                   class="form-control"
                   id="Username"
                   name="username"
                   aria-describedby="emailHelp"
-                  placeholder="User Name"
+                  placeholder="Masukan username"
                 />
               </div>
-              <div class="mb-3">
+              <div class="mb-3 mt-4">
+                <label for="password" class="mb-2 text-black text-opacity-75"
+                  >Password</label
+                >
                 <input
                   type="password"
                   class="form-control"
                   name="password"
                   id="password"
-                  placeholder="password"
+                  placeholder="masukkan password"
                 />
               </div>
               <div class="text-center">
@@ -78,9 +71,9 @@
                 </button>
               </div>
               <div id="emailHelp" class="form-text text-center mb-5 text-dark">
-                Not Registered?
+                Tidak mempunyai akun?
                 <a href="/register" class="text-dark fw-bold">
-                  Create an Account</a
+                  Buat akun baru</a
                 >
               </div>
             </form>

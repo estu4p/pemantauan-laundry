@@ -44,17 +44,17 @@ def login():
         expires = datetime.timedelta(days=3)
         expires_refresh = datetime.timedelta(days=3)
 
-        access_token = create_access_token(data, fresh=True, expires_delta=expires)
-        refresh_token = create_refresh_token(data, expires_delta=expires_refresh)
+        access_token = create_access_token(identity=data, fresh=True, expires_delta=expires)
+        refresh_token = create_refresh_token(identity=data, expires_delta=expires_refresh)
 
         session['jwt_token'] = access_token
 
-        return response.success({
-            'data': data,
-            'access_token': access_token,
-            'refresh_token': refresh_token,
-        }, 'success')
-        # return render_template('index.html')
+        # return response.success({
+        #     'data': data,
+        #     'access_token': access_token,
+        #     'refresh_token': refresh_token,
+        # }, 'success')
+        return render_template('index.html')
     
     except Exception as e:
         print(e)
@@ -96,5 +96,54 @@ def uploadPhoto():
             return response.success('', 'success')
         else:
             return response.badRequest([], 'Allowed file type is png, jpg, jpeg')
+    except Exception as e:
+        print(e)
+
+
+# API
+def apiStore():
+    try:
+        username = request.form.get('username')
+        email = request.form.get('email')
+        password = request.form.get('password')
+
+        user = User(username=username, email=email, password=password)
+        user.setPassword(password)
+        db.session.add(user)
+        db.session.commit()
+
+        return response.success('', 'success')
+    except Exception as e:
+        print(e)
+
+def apiLogin():
+    try:
+        username = request.form.get('username')
+        password = request.form.get('password')
+
+        user = User.query.filter_by(username=username).first()
+
+        if not user:
+            return response.badRequest([], 'Empty....')
+
+        if not user.checkPassword(password):
+            return response.badRequest([], 'Password not match....')
+
+        data = singleObject(user)
+
+        expires = datetime.timedelta(days=3)
+        expires_refresh = datetime.timedelta(days=3)
+
+        access_token = create_access_token(identity=data, fresh=True, expires_delta=expires)
+        refresh_token = create_refresh_token(identity=data, expires_delta=expires_refresh)
+
+        session['jwt_token'] = access_token
+
+        return response.success({
+            'data': data,
+            'access_token': access_token,
+            'refresh_token': refresh_token,
+        }, 'success')
+    
     except Exception as e:
         print(e)

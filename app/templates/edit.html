@@ -35,16 +35,16 @@
                   </div>
                   <div class="col-md-6 mb-3">
                     <div class="form-group">
-                      <label for="form_lastname">Phone</label>
+                      <label for="price">Harga</label>
                       <input
-                        id="form_lastname"
+                        id="price"
                         type="text"
-                        name="phone"
+                        name="price"
                         class="form-control"
-                        placeholder="Ho HP"
+                        placeholder="Harga"
                         required
                         data-error="Lastname is required."
-                        value="{{ customer.phone}}"
+                        value="{{ customer.price}}"
                       />
                     </div>
                   </div>
@@ -83,6 +83,19 @@
                         <option value="5" {% if customer and customer.process == 5 %}selected{% endif %} >Setrika</option>
                         <option value="6" {% if customer and customer.process == 6 %}selected{% endif %} >Selesai</option>
                       </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                      <label for="form_phone">No HP</label>
+                      <input
+                        id="form_phone"
+                        type="text"
+                        name="phone"
+                        class="form-control"
+                        placeholder="No HP"
+                        value="{{ customer.phone}}"
+                      />
                     </div>
                   </div>
                   <div class="col-md-6 mb-3">

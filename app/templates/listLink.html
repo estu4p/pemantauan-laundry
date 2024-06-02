@@ -25,7 +25,13 @@
                   <td>{{ item.name }}</td>
                   <td>{{ item.address }}</td>
                   <td>{{ item.status }}</td>
-                  <td>{{ item.process }}</td>
+                  <td>
+                    {% if item.process == 1 %} Barang sampai di toko {% elif
+                    item.process == 2 %} Penimbangan {% elif item.process == 3
+                    %} Pencucian {% elif item.process == 4 %} Pengeringan {%
+                    elif item.process == 5 %} Setrika {% else %} Selesai {%
+                    endif %}
+                  </td>
                   <td class="w-100 d-flex gap-2">
                     <a href="/link/{{ item.url }}" class="btn btn-primary"
                       >Lihat</a
